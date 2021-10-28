@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import awsExports from "../../src/aws-exports";
 import { deletePost } from "../../src/graphql/mutations";
 import { getPost, listPosts } from "../../src/graphql/queries";
-import styles from "../../styles/Home.module.css";
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -42,8 +41,8 @@ export default function Post({ post }) {
 
   if (router.isFallback) {
     return (
-      <div className={styles.container}>
-        <h1 className={styles.title}>Loading&hellip;</h1>
+      <div class="">
+        <h1 class="">Loading&hellip;</h1>
       </div>
     );
   }
@@ -66,19 +65,19 @@ export default function Post({ post }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div class="">
       <Head>
         <title>{post.title} – Amplify + Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>{post.title}</h1>
+      <main class="">
+        <h1 class="">{post.title}</h1>
 
-        <p className={styles.description}>{post.content}</p>
+        <p class="">{post.content}</p>
       </main>
 
-      <footer className={styles.footer}>
+      <footer class="">
         <button onClick={handleDelete}>💥 Delete post</button>
       </footer>
     </div>

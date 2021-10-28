@@ -5,7 +5,7 @@ import Head from "next/head";
 import awsExports from "../src/aws-exports";
 import { createPost } from "../src/graphql/mutations";
 import { listPosts } from "../src/graphql/queries";
-import styles from "../styles/Home.module.css";
+
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -46,30 +46,30 @@ async function handleCreatePost(event) {
 
 export default function Home({ posts = [] }) {
   return (
-    <div className={styles.container}>
+    <div class="flex items-center justify-center h-screen">
       <Head>
         <title>Amplify + Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Amplify + Next.js</h1>
+      <main class="flex flex-col text-center mb-12">
+        <h1 class="mb-12 text-4xl">Amplify + Next.js</h1>
 
-        <p className={styles.description}>
-          <code className={styles.code}>{posts.length}</code>
+        <p class="mb-6">
+          <code class="">{posts.length}</code>
           posts
         </p>
 
-        <div className={styles.grid}>
+        <div class="">
           {posts.map((post) => (
-            <a className={styles.card} href={`/posts/${post.id}`} key={post.id}>
+            <a class="" href={`/posts/${post.id}`} key={post.id}>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
             </a>
           ))}
 
-          <div className={styles.card}>
-            <h3 className={styles.title}>New Post</h3>
+          <div class="border-2 bg-gray-50">
+            <h3 class="">New Post</h3>
 
             <AmplifyAuthenticator>
               <form onSubmit={handleCreatePost}>
@@ -89,13 +89,15 @@ export default function Home({ posts = [] }) {
                   />
                 </fieldset>
 
-                <button>Create Post</button>
-                <button type="button" onClick={() => Auth.signOut()}>
-                  Sign out
-                </button>
+                <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Create Post</button>
               </form>
+              
             </AmplifyAuthenticator>
+            
           </div>
+          <button class="mt-12 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg" type="button" onClick={() => Auth.signOut()}>
+            Sign out
+          </button>
         </div>
       </main>
     </div>
